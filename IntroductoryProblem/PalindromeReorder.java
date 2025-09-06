@@ -27,52 +27,29 @@ public class PalindromeReorder {
             }
 
            if(bc){
-               String s1="";
-               String s2="";
-               String s3="";
+               StringBuilder s1 = new StringBuilder();
+               StringBuilder s2 = new StringBuilder();
+               StringBuilder s3 = new StringBuilder();
 
-               for(char i: map.keySet()){
-                   int val= map.get(i);
-                   if(val%2!=0){
-                       s3+=i;
+               for (char i : map.keySet()) {
+                   int val = map.get(i);
+                   if (val % 2 != 0) {
+                       s3.append(i);
                        val--;
-                       boolean bt =true;
-                       for(int j=0; j<val; j++){
-                           if(bt){
-                               s1+=i;
-                               bt=false;
-                           }
-                           else{
-                               s2+=i;
-                               bt=true;
-                           }
-                       }
                    }
-                   else{
-                       boolean bt =true;
-                       for(int j=0; j<val; j++){
-                           if(bt){
-                               s1+=i;
-                               bt=false;
-                           }
-                           else{
-                               s2+=i;
-                               bt=true;
-                           }
-                       }
+                   for (int j = 0; j < val / 2; j++) {
+                       s1.append(i);
+                       s2.append(i);
                    }
                }
-               String ans="";
-               if(s3.length()>0){
-                   ans+=s1+s3;
-               }
-               else{
-                   ans+=s1;
-               }
-               for (int i=s2.length()-1;i>=0;i--){
-                   ans+= s2.charAt(i);
-               }
-               System.out.println(ans);
+
+               StringBuilder ans = new StringBuilder();
+               ans.append(s1);
+               ans.append(s3);
+               ans.append(s2.reverse());
+
+               System.out.println(ans.toString());
+
            }
 
 
