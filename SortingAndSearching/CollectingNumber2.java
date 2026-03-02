@@ -71,8 +71,6 @@ public class CollectingNumber2 {
             arr[a] = arr[b];
             arr[b] = temp;
 
-//hi
-
             out.println(ans);
         }
 
