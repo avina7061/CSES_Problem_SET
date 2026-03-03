@@ -1,5 +1,3 @@
-//package CSES_Problem_SET.SortingAndSearching;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,7 +5,7 @@ import java.io.PrintWriter;
 import java.util.*;
 
 
-public class DistinctValueSubarray {
+public class JosePhus2 {
     static final int MAXN = 300006;
     static ArrayList<Integer>[] divisors;
 
@@ -26,21 +24,7 @@ public class DistinctValueSubarray {
 
 
     /* ---------- SOLVE ---------- */
-    public static int find(ArrayList<Integer> list, int ind) {
-        int left = 0;
-        int right = list.size() - 1;
-        int ans = -1;
-        while (left <= right) {
-            int mid = (left + right) / 2;
-            if (list.get(mid) >= ind) {
-                ans = list.get(mid);
-                right = mid - 1;
-            } else {
-                left = mid + 1;
-            }
-        }
-        return ans;
-    }
+
 
     static long MOD = 1_000_000_007;
 
@@ -56,43 +40,37 @@ public class DistinctValueSubarray {
     }
 
     static void solve(FastScanner sc) {
+        int cnt=0;
 
         int n = sc.nextInt();
-        int arr[] = new int[n];
+        int k=sc.nextInt();
+        int valc=k/n;
+        k=k%(n);
+        if(k==0&&valc>0)k=n;
+        Queue<Integer> q = new LinkedList<>();
+        for(int i=1; i<=n; i++){
+            q.add(i);
+        }
+        ArrayList<Integer>ans = new ArrayList<>();
 
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+
+        while(!q.isEmpty()){
+            cnt++;
+            if(cnt%(k+1)!=0||cnt==0){
+                int val=q.poll();
+                q.add(val);
+            }
+            else{
+                ans.add(q.poll());
+            }
+
         }
 
-        HashMap<Integer, Integer> map = new HashMap<>();
 
-        for (int i = 0; i < n; i++) {
-            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
-        }
+        for(int i: ans) System.out.print(i+" ");
+        System.out.println();
 
-        long mul = 1;
 
-        // Compute initial product ∏(freq + 1)
-        for (int key : map.keySet()) {
-            mul = (mul * (map.get(key) + 1)) % MOD;
-        }
-
-        long ans = 0;
-
-        for (int i = 0; i < n; i++) {
-
-            int val = map.get(arr[i]) + 1;
-
-            long inv = power(val, MOD - 2);
-            ans = (ans + (mul * inv) % MOD) % MOD;
-
-            mul = (mul * inv) % MOD;
-            mul = (mul * (val - 1)) % MOD;
-
-            map.put(arr[i], map.get(arr[i]) - 1);
-        }
-
-        System.out.println(ans);
     }
 
 
