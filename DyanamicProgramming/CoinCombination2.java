@@ -1,7 +1,6 @@
 //package CSES_Problem_SET.DyanamicProgramming;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Scanner;
 
 public class CoinCombination2 {

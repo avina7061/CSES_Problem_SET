@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class gridPath {
 
-   public static String solve(char grid[][], int i, int j,String dp[][],String ans){
+   public static String solve(char grid[][], int i, int j, String dp[][], String ans){
        if(i == grid.length - 1 && j == grid[0].length - 1) {
            return String.valueOf(grid[i][j]);
        }

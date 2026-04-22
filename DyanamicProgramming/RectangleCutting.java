@@ -1,6 +1,5 @@
 //package CSES_Problem_SET.DyanamicProgramming;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class RectangleCutting {

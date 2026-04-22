@@ -1,6 +1,5 @@
 //package CSES_Problem_SET.SortingAndSearching;
 
-import java.util.HashMap;
 import java.util.Scanner;
 import java.util.TreeMap;
 
